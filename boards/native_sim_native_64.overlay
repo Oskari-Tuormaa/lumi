@@ -1,0 +1,11 @@
+/ {
+    chosen {
+        zephyr,display = &sdl_dc;
+    };
+};
+
+&sdl_dc {
+    status = "okay";
+    width = <64>;
+    height = <32>;
+};

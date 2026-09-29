@@ -31,21 +31,24 @@
     {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          # Gateway dependencies
-          (zephyr."sdk-1_0_0".override {
-            targets = [ "arm-zephyr-eabi" ];
+          (zephyr."sdk-1_0".override {
+            targets = [ "xtensa-espressif_esp32s3_zephyr-elf" ];
           })
           zephyr.pythonEnv
           zephyr.hosttools
 
-          # Parser dependencies
+          # Target dependencies
+          esptool
+
+          # Simulator dependencies
           gcc
+          pkgconf
+          sdl2-compat
 
           # Common dependencies
           cmake
           ninja
 
-          # Misc util
           pkgs-unstable.just
         ];
       };

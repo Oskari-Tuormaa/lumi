@@ -1,3 +1,4 @@
 /.direnv
 /.cache/clangd/index
 /build
+/build_sim

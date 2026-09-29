@@ -6,14 +6,15 @@ _build board=board *ARGS:
 build: _build
 build-pristine: (_build board "-p always")
 
-run: (_build "native_sim/native/64")
-    ./build/zephyr/zephyr.exe --display_zoom_pct=1000
+run: (_build "native_sim/native/64" "-d build_sim")
+    ./build_sim/zephyr/zephyr.exe --display_zoom_pct=1000
 
 flash: (_build)
     west flash --no-rebuild
 
 clean:
     -rm -rf build
+    -rm -rf build_sim
 
 # Initialise the West workspace (if not already done) and fetch all modules
 setup:

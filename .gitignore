@@ -2,3 +2,4 @@
 /.cache/clangd/index
 /build
 /build_sim
+/compile_commands.json

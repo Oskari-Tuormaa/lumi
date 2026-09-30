@@ -7,7 +7,7 @@ build: _build
 build-pristine: (_build board "-p always")
 
 run: (_build "native_sim/native/64" "-d build_sim")
-    ./build_sim/zephyr/zephyr.exe --display_zoom_pct=1000
+    ./build_sim/zephyr/zephyr.exe
 
 flash: (_build)
     west flash --no-rebuild

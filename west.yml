@@ -1,4 +1,6 @@
 manifest:
+  version: "0.10"
+
   remotes:
     - name: zephyr
       url-base: https://github.com/zephyrproject-rtos
@@ -8,4 +10,14 @@ manifest:
       remote: zephyr
       repo-path: zephyr
       revision: v4.4.0
-      import: true
+      import:
+        - name-allowlist:
+            # HAL: Espressif for ESP32S3
+            - hal_espressif
+            # ARM CMSIS for native_sim and ARM cores
+            - cmsis
+            - cmsis_6
+            # GUI
+            - lvgl
+            # Bootloader
+            - mcuboot

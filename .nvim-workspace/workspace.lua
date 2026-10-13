@@ -1,4 +1,5 @@
 local nmap = require("config.utils").nmap
 
-nmap("<leader>e", ":sp term://just build<cr>")
-nmap("<leader>E", ":sp term://just run<cr>")
+nmap("<leader>ee", ":sp term://just build<cr>")
+nmap("<leader>ef", ":sp term://just flash<cr>")
+nmap("<leader>er", ":sp term://just run<cr>")

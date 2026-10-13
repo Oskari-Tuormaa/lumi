@@ -1,16 +1,22 @@
-board := "esp32s3_devkitc/esp32s3/appcpu"
+board := "esp32c3_devkitm/esp32c3"
 
 _build board=board *ARGS:
-    west build -b {{board}} . {{ARGS}}
+    west build --sysbuild -b {{board}} . {{ARGS}}
 
 build: _build
 build-pristine: (_build board "-p always")
 
-run: (_build "native_sim/native/64" "-d build_sim")
-    ./build_sim/zephyr/zephyr.exe
+build-sim: (_build "native_sim/native/64" "-d build_sim")
+run: build-sim
+    ./build_sim/lumi/zephyr/zephyr.exe
+
+build-all: build build-sim
 
 flash: (_build)
     west flash --no-rebuild
+
+monitor:
+    picocom -b 115200 /dev/serial/by-id/*Silicon_Labs*-if00-port0
 
 clean:
     -rm -rf build

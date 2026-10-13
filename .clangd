@@ -1,2 +1,2 @@
 CompileFlags:
-    Remove: [ -fno-reorder-functions, -fno-freestanding ]
+    Remove: [ -fno-reorder-functions, -fno-freestanding, -fstrict-volatile-bitfields ]

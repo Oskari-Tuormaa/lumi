@@ -1,0 +1,72 @@
+/*
+ * Generic GPIO Exposure Overlay for ESP32-S3-DevKitC
+ * Exposes 14 safe, sequential pins as generic outputs.
+ */
+
+/ {
+    /* Expose pins as generic output nodes */
+    display_gpios: generic_outputs {
+        compatible = "gpio-leds";
+
+        user_pin_1: pin_1 {
+            gpios = <&gpio0 1 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_2: pin_2 {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_3: pin_3 {
+            gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_4: pin_4 {
+            gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_5: pin_5 {
+            gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_6: pin_6 {
+            gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_7: pin_7 {
+            gpios = <&gpio0 7 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_8: pin_8 {
+            gpios = <&gpio0 8 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_9: pin_9 {
+            gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_10: pin_10 {
+            gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_11: pin_11 {
+            gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_12: pin_12 {
+            gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_13: pin_13 {
+            gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+        };
+        user_pin_14: pin_14 {
+            gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
+        };
+    };
+
+    /* System-wide shorthand shortcuts for your source files */
+    aliases {
+        gpiopin1  = &user_pin_1;
+        gpiopin2  = &user_pin_2;
+        gpiopin3  = &user_pin_3;
+        gpiopin4  = &user_pin_4;
+        gpiopin5  = &user_pin_5;
+        gpiopin6  = &user_pin_6;
+        gpiopin7  = &user_pin_7;
+        gpiopin8  = &user_pin_8;
+        gpiopin9  = &user_pin_9;
+        gpiopin10 = &user_pin_10;
+        gpiopin11 = &user_pin_11;
+        gpiopin12 = &user_pin_12;
+        gpiopin13 = &user_pin_13;
+        gpiopin14 = &user_pin_14;
+    };
+};

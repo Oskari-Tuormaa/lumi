@@ -32,7 +32,7 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           (zephyr."sdk-1_0".override {
-            targets = [ "riscv64-zephyr-elf" ];
+            targets = [ "xtensa-espressif_esp32s3_zephyr-elf" ];
           })
           zephyr.pythonEnv
           zephyr.hosttools
@@ -48,8 +48,6 @@
           # Common dependencies
           cmake
           ninja
-
-          picocom
 
           pkgs-unstable.just
         ];

@@ -1,4 +1,4 @@
-board := "esp32c3_devkitm/esp32c3"
+board := "esp32s3_devkitc/esp32s3/procpu"
 
 _build board=board *ARGS:
     west build --sysbuild -b {{board}} . {{ARGS}}
@@ -16,7 +16,7 @@ flash: (_build)
     west flash --no-rebuild
 
 monitor:
-    picocom -b 115200 /dev/serial/by-id/*Silicon_Labs*-if00-port0
+    west espressif monitor
 
 clean:
     -rm -rf build

@@ -1,0 +1,57 @@
+mainmenu "Lumi"
+
+config LUMI_PANEL_WIDTH
+	int "Panel width in pixels"
+	default 128
+
+config LUMI_PANEL_HEIGHT
+	int "Panel height in pixels"
+	default 64
+	help
+	  Total height of the panel. The panel is scanned as two halves
+	  (R1G1B1 drive the top half, R2G2B2 the bottom half), so this must
+	  be even and at most 64 (5 address lines).
+
+config HUB75_LCD
+	bool "HUB75E driver on ESP32-S3 LCD_CAM + GDMA"
+	default y
+	depends on SOC_SERIES_ESP32S3 && DT_HAS_ESPRESSIF_ESP32_LCD_CAM_ENABLED
+	select ESP32_LCD_CAM
+	select DMA
+	help
+	  Drive a HUB75E panel from the LCD_CAM peripheral (i80, 16 bit) fed
+	  by a self-looping GDMA descriptor chain. After start-up the CPU is
+	  not involved in refreshing the panel.
+
+if HUB75_LCD
+
+config HUB75_LCD_PCLK_HZ
+	int "Pixel clock (HUB75 CLK) frequency in Hz"
+	default 10000000
+	help
+	  Must divide 80 MHz by an integer in the range 1..64.
+
+config HUB75_LCD_BIT_DEPTH
+	int "Bit planes per colour channel"
+	range 1 8
+	default 8
+
+config HUB75_LCD_OE_BASE_CLOCKS
+	int "Output-enable time of the least significant bit plane, in clocks"
+	range 1 8
+	default 4
+	help
+	  Plane N is displayed for (this value << N) clocks. Larger values
+	  give a brighter image but a lower refresh rate.
+
+config HUB75_LCD_OE_ACTIVE_LOW
+	bool "OE pin is active low"
+	default y
+
+config HUB75_LCD_GAMMA_X100
+	int "Gamma exponent times 100"
+	default 220
+
+endif # HUB75_LCD
+
+source "Kconfig.zephyr"

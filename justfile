@@ -1,14 +1,14 @@
 board := "esp32s3_devkitc/esp32s3/procpu"
 
 _build board=board *ARGS:
-    west build --sysbuild -b {{board}} . {{ARGS}}
+    west build -b {{board}} . {{ARGS}}
 
 build: _build
 build-pristine: (_build board "-p always")
 
 build-sim: (_build "native_sim/native/64" "-d build_sim")
 run: build-sim
-    ./build_sim/lumi/zephyr/zephyr.exe
+    ./build_sim/zephyr/zephyr.exe
 
 build-all: build build-sim
 

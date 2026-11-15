@@ -6,6 +6,6 @@
 
 &sdl_dc {
     status = "okay";
-    width = <64>;
-    height = <32>;
+    width = <128>;
+    height = <64>;
 };
